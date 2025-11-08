@@ -5,13 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.asvn.randomizer.databinding.FragmentMainBinding
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
+    lateinit var viewModel: MainFViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -19,6 +20,9 @@ class MainFragment : Fragment() {
     ): View? {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val view = binding.root
+        viewModel = ViewModelProvider(this)[MainFViewModel::class.java]
+        binding.mainFViewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
         binding.createFab.setOnClickListener {
             view.findNavController()
