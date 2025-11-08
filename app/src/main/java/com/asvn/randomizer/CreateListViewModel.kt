@@ -6,6 +6,7 @@ import kotlinx.coroutines.launch
 
 class CreateListViewModel(val dao: ItemDao) : ViewModel() {
     var newItemName = ""
+    val items = dao.getAll()
 
     fun addItem() {
         viewModelScope.launch {
