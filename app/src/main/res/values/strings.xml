@@ -2,9 +2,11 @@
     <string name="app_name">Randomizer</string>
     <string name="add">Add</string>
     <string name="choose">Choose</string>
-    <string name="some_text">Some text</string>
+    <string name="list_name_hint">Enter list name</string>
+    <string name="item_name_hint">Enter item name</string>
     <string name="create">Create</string>
     <string name="save">Save</string>
     <string name="label_main_fragment">Randomizer</string>
     <string name="label_create_list_fragment">Create List</string>
+    <string name="add_list_fab_description">Add list</string>
 </resources>

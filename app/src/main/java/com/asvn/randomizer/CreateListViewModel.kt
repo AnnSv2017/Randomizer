@@ -1,19 +1,17 @@
 package com.asvn.randomizer
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 
-class CreateListViewModel : ViewModel() {
-    private val _text = MutableLiveData<String>("Abcd")
-    val text: LiveData<String>
-        get() = _text
+class CreateListViewModel(val dao: ItemDao) : ViewModel() {
+    var newItemName = ""
 
-//    init {
-//        _text.value = "Initial text"
-//    }
-
-    fun save() {
-        _text.value = "SAVE"
+    fun addItem() {
+        viewModelScope.launch {
+            val item = Item()
+            item.name = newItemName
+            dao.insert(item)
+        }
     }
 }

@@ -3,9 +3,11 @@
     <string name="app_name">Рандомайзер</string>
     <string name="add">Добавить</string>
     <string name="choose">Выбрать</string>
-    <string name="some_text">Какой-то текст</string>
+    <string name="list_name_hint">Введите название текста</string>
+    <string name="item_name_hint">Введите название элемента</string>
     <string name="create">Создать</string>
     <string name="save">Сохранить</string>
     <string name="label_main_fragment">Рандомайзер</string>
     <string name="label_create_list_fragment">Создание списка</string>
+    <string name="add_list_fab_description">Добавить список</string>
 </resources>
