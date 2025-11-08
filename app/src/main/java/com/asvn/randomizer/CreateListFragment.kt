@@ -34,7 +34,7 @@ class CreateListFragment : Fragment() {
 
         viewModel.items.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.data = it
+                adapter.submitList(it)
             }
         })
 

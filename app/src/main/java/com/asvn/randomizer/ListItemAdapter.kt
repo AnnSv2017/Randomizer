@@ -2,43 +2,34 @@ package com.asvn.randomizer
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.asvn.randomizer.databinding.ListItemBinding
 
-class ListItemAdapter : RecyclerView.Adapter<ListItemAdapter.ListItemViewHolder>() {
-    var data = listOf<Item>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
-
-    override fun getItemCount() = data.size
+class ListItemAdapter
+    : ListAdapter<Item, ListItemAdapter.ListItemViewHolder>(ListItemDiffItemCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
         : ListItemViewHolder = ListItemViewHolder.inflateFrom(parent)
 
     override fun onBindViewHolder(holder: ListItemViewHolder, position: Int) {
-        val item = data[position]
+        val item = getItem(position)
         holder.bind(item)
     }
 
-    class ListItemViewHolder(val rootView: CardView)
-        : RecyclerView.ViewHolder(rootView) {
+    class ListItemViewHolder(val binding: ListItemBinding)
+        : RecyclerView.ViewHolder(binding.root) {
 
-            val itemName = rootView.findViewById<TextView>(R.id.item_name)
-
-            companion object {
-                fun inflateFrom(parent: ViewGroup): ListItemViewHolder {
-                    val layoutInflater = LayoutInflater.from(parent.context)
-                    val view = layoutInflater
-                        .inflate(R.layout.list_item, parent, false) as CardView
-                    return ListItemViewHolder(view)
-                }
-            }
-
-            fun bind(item: Item) {
-                itemName.text = item.name
+        companion object {
+            fun inflateFrom(parent: ViewGroup): ListItemViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = ListItemBinding.inflate(layoutInflater, parent, false)
+                return ListItemViewHolder(binding)
             }
         }
+
+        fun bind(item: Item) {
+            binding.item = item
+        }
+    }
 }
