@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Рандомайзер</string>
+    <string name="add">Добавить</string>
+    <string name="choose">Выбрать</string>
+    <string name="some_text">Какой-то текст</string>
+    <string name="create">Создать</string>
+    <string name="save">Сохранить</string>
+    <string name="label_main_fragment">Рандомайзер</string>
+    <string name="label_create_list_fragment">Создание списка</string>
+</resources>
