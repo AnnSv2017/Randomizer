@@ -3,6 +3,7 @@ package com.asvn.randomizer
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
 class ListItemAdapter : RecyclerView.Adapter<ListItemAdapter.ListItemViewHolder>() {
@@ -22,20 +23,22 @@ class ListItemAdapter : RecyclerView.Adapter<ListItemAdapter.ListItemViewHolder>
         holder.bind(item)
     }
 
-    class ListItemViewHolder(val rootView: TextView)
+    class ListItemViewHolder(val rootView: CardView)
         : RecyclerView.ViewHolder(rootView) {
+
+            val itemName = rootView.findViewById<TextView>(R.id.item_name)
 
             companion object {
                 fun inflateFrom(parent: ViewGroup): ListItemViewHolder {
                     val layoutInflater = LayoutInflater.from(parent.context)
                     val view = layoutInflater
-                        .inflate(R.layout.list_item, parent, false) as TextView
+                        .inflate(R.layout.list_item, parent, false) as CardView
                     return ListItemViewHolder(view)
                 }
             }
 
-        fun bind(item: Item) {
-            rootView.text = item.name
+            fun bind(item: Item) {
+                itemName.text = item.name
+            }
         }
-    }
 }
