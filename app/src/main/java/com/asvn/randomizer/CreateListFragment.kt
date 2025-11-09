@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.asvn.randomizer.databinding.FragmentCreateListBinding
 
 class CreateListFragment : Fragment() {
@@ -21,7 +22,7 @@ class CreateListFragment : Fragment() {
         val view = binding.root
 
         val application = requireNotNull(this.activity).application
-        val dao = AppDatabase.getInstance(application).itemDao
+        val dao = AppDatabase.getInstance(application).listDao
 
         val viewModelFactory = CreateListViewModelFactory(dao)
         val viewModel = ViewModelProvider(
@@ -35,6 +36,14 @@ class CreateListFragment : Fragment() {
         viewModel.items.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
+            }
+        })
+
+        viewModel.save.observe(viewLifecycleOwner, Observer { saved ->
+            if (saved) {
+                view.findNavController()
+                    .navigate(R.id.action_createListFragment_to_mainFragment)
+                viewModel.saveCompleted()
             }
         })
 

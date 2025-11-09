@@ -17,5 +17,9 @@
         android:id="@+id/createListFragment"
         android:name="com.asvn.randomizer.CreateListFragment"
         android:label="@string/label_create_list_fragment"
-        tools:layout="@layout/fragment_create_list" />
+        tools:layout="@layout/fragment_create_list" >
+        <action
+            android:id="@+id/action_createListFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 </navigation>
