@@ -21,7 +21,7 @@ interface ListDao {
     }
 
     @Transaction
-    @Query("SELECT * FROM list_table")
+    @Query("SELECT * FROM list_table ORDER BY id DESC")
     fun getAllLists(): LiveData<List<ListEntity>>
 
     @Transaction
