@@ -7,7 +7,9 @@
     <string name="item_name_hint">Введите название элемента</string>
     <string name="create">Создать</string>
     <string name="save">Сохранить</string>
+    <string name="edit">Редактировать</string>
     <string name="label_main_fragment">Рандомайзер</string>
     <string name="label_create_list_fragment">Создание списка</string>
+    <string name="label_view_list_fragment">Просмотр списка</string>
     <string name="add_list_fab_description">Добавить список</string>
 </resources>

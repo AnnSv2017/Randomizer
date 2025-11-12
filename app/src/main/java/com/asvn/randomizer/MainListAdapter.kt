@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.asvn.randomizer.databinding.MainListElementBinding
 
-class MainListAdapter
+class MainListAdapter(val clickListener: (listId: Long) -> Unit)
     : ListAdapter<ListEntity, MainListAdapter.MainListViewHolder>(MainListDiffItemCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
@@ -14,7 +14,7 @@ class MainListAdapter
 
     override fun onBindViewHolder(holder: MainListViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, clickListener)
     }
 
     class MainListViewHolder(val binding: MainListElementBinding)
@@ -28,8 +28,9 @@ class MainListAdapter
             }
         }
 
-        fun bind(item: ListEntity){
+        fun bind(item: ListEntity, clickListener: (listId: Long) -> Unit) {
             binding.mainElement = item
+            binding.root.setOnClickListener { clickListener(item.id) }
         }
     }
 }

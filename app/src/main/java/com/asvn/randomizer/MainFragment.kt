@@ -31,7 +31,11 @@ class MainFragment : Fragment() {
         binding.mainFViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        val adapter = MainListAdapter()
+        val adapter = MainListAdapter { listId ->
+            val action = MainFragmentDirections
+                .actionMainFragmentToViewListFragment(listId)
+            view.findNavController().navigate(action)
+        }
         binding.mainList.adapter = adapter
 
         viewModel.listElements.observe(viewLifecycleOwner, Observer {

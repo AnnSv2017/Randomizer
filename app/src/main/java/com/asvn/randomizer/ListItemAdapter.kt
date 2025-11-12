@@ -6,15 +6,16 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.asvn.randomizer.databinding.ListItemBinding
 
-class ListItemAdapter
-    : ListAdapter<Item, ListItemAdapter.ListItemViewHolder>(ListItemDiffItemCallback()) {
+class ListItemAdapter(
+    private val onItemClick: (Item) -> Unit
+) : ListAdapter<Item, ListItemAdapter.ListItemViewHolder>(ListItemDiffItemCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
         : ListItemViewHolder = ListItemViewHolder.inflateFrom(parent)
 
     override fun onBindViewHolder(holder: ListItemViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, onItemClick)
     }
 
     class ListItemViewHolder(val binding: ListItemBinding)
@@ -28,8 +29,11 @@ class ListItemAdapter
             }
         }
 
-        fun bind(item: Item) {
+        fun bind(item: Item, onItemClick: (Item) -> Unit) {
             binding.item = item
+            binding.itemCard.setOnClickListener {
+                onItemClick(item)
+            }
         }
     }
 }

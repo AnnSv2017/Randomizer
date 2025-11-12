@@ -6,7 +6,9 @@
     <string name="item_name_hint">Enter item name</string>
     <string name="create">Create</string>
     <string name="save">Save</string>
+    <string name="edit">Edit</string>
     <string name="label_main_fragment">Randomizer</string>
     <string name="label_create_list_fragment">Create List</string>
+    <string name="label_view_list_fragment">View List</string>
     <string name="add_list_fab_description">Add list</string>
 </resources>

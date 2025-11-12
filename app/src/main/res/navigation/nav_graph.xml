@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_mainFragment_to_createListFragment"
             app:destination="@id/createListFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_viewListFragment"
+            app:destination="@id/viewListFragment" />
     </fragment>
     <fragment
         android:id="@+id/createListFragment"
@@ -21,5 +24,14 @@
         <action
             android:id="@+id/action_createListFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewListFragment"
+        android:name="com.asvn.randomizer.ViewListFragment"
+        android:label="@string/label_view_list_fragment"
+        tools:layout="@layout/fragment_view_list" >
+        <argument
+            android:name="listId"
+            app:argType="long" />
     </fragment>
 </navigation>
